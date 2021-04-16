@@ -1,0 +1,7 @@
+﻿@model ProjetASPCore.ViewModels.BookListViewModel
+
+
+@foreach (var book in Model.Books)
+{
+   <partial name="_CardBook" model="@book" />
+}

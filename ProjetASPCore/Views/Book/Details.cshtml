@@ -1,0 +1,15 @@
+﻿@model ProjetASPCore.Models.Book
+
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <h2>
+            <a>@Model.Name</a>
+        </h2>
+        <img src="@Model.ImageUrl" alt="" width="250" height="500">
+        <div class="caption-full">
+            <p>@Model.ShortDescription</p>
+            <p>@Model.LongDescription</p>
+            <h3 class="pull-right">@Model.Price.ToString("c")</h3>
+        </div>
+    </div>
+</div>
