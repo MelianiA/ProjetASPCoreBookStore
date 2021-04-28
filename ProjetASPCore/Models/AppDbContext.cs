@@ -15,7 +15,7 @@ namespace ProjetASPCore.Models
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<ShoppingCardItem> ShoppingCardItems { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

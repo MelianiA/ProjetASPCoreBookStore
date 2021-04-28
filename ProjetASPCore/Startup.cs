@@ -26,15 +26,15 @@ namespace ProjetASPCore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"))
-            );
-            services.AddControllersWithViews(); //mvc
-
-            //dependency injection
+            services.AddControllersWithViews();
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+            services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
+            services.AddHttpContextAccessor();
+            services.AddSession();
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
 
         }
 
@@ -45,19 +45,17 @@ namespace ProjetASPCore
             {
                 app.UseDeveloperExceptionPage();
             }
-            /* Composants middleware */
-            app.UseHttpsRedirection(); //https
-            app.UseStaticFiles(); //fichiers statiques
-
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
-            { 
-                //Le routage mvc
+            {
                 endpoints.MapControllerRoute(
-                    name:"default",
-                    pattern:"{controller=home}/{action=Index}/{id?}"
-                    );
+                  name: "default",
+                  pattern: "{controller=Home}/{action=Index}/{id?}"
+                  );
             });
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetASPCore.Models
 {
-    public class ShoppingCardItem
+    public class ShoppingCartItem
     {
         [Key]
         public int ShoppingCartItemId { get; set; }
