@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjetASPCore.Models;
 using ProjetASPCore.Repository;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjetASPCore.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
 
